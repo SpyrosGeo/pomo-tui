@@ -35,5 +35,6 @@ return Model{
 	Mode:          Pomodoro,
 	TimeLeft:      25 * time.Minute,
 	PomodoroCount: 0,
-	Running:       false,}
+	Running:       false
+	}
 }
