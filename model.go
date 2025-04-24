@@ -27,6 +27,7 @@ type Model struct {
     TimeLeft      time.Duration // Time remaining
     PomodoroCount int           // Number of completed Pomodoros
     Running       bool          // Is the timer active?
+    LastTick     time.Time     // Last tick time
 }
 
 
@@ -35,6 +36,6 @@ return Model{
 	Mode:          Pomodoro,
 	TimeLeft:      25 * time.Minute,
 	PomodoroCount: 0,
-	Running:       false
+	Running:       false,
 	}
 }
