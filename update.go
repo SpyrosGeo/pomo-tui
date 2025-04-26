@@ -44,8 +44,8 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				if( m.TimeLeft > 0) {
 				m.TimeLeft -= time.Second
 				}
-			} else {
-				// Timer is done, transition to the next mode
+			m.LastTick = time.Now()
+			 if(m.TimeLeft <= 0) {
 				m.Running = false
 				switch m.Mode {
 				case Pomodoro:
@@ -58,9 +58,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				case LongBreak:
 					m.Mode = Pomodoro
 					m.TimeLeft = 25 * time.Minute
+					}
 				}
 			}
-			m.LastTick = time.Now()
 		}
 	}
 	return m, tea.Tick(time.Second,tickFunc )
