@@ -1,6 +1,10 @@
 package main
 
-import "time"
+import(
+	"time"
+"github.com/charmbracelet/bubbles/progress"
+)
+
 type Mode int
 
 const (
@@ -40,6 +44,7 @@ type Model struct {
     PomodoroCount int           // Number of completed Pomodoros
     Running       bool          // Is the timer active?
     LastTick     time.Time     // Last tick time
+ 	Progress   progress.Model
 }
 
 
@@ -49,6 +54,10 @@ return Model{
 	TimeLeft:      25 * time.Minute,
 	PomodoroCount: 0,
 	Running:       false,
+	Progress: progress.New(
+			progress.WithDefaultGradient(),
+			progress.WithWidth(100),
+			),
 	}
 }
 
